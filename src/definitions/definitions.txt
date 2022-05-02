@@ -1,0 +1,9 @@
+G-PK = Non-penalty goals
+PK = Penalty kicks made
+PKatt = Penalty kicks attempted
+CrdY = Yellow cards
+CrdR = Red cards
+G+A = Goals + Assists per 90 minutes
+xG = Expected Goals
+xA = Expected Assists
+xG+xA = Expected Goals + Expected Assists per 90 minutes

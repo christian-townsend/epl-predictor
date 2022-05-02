@@ -1,3 +1,10 @@
-.playa {
-  margin-right: 300px;
+h1 {
+  align-content: center;
+}
+
+.test {
+  margin-top: 10px;
+
+  padding-left: 10px;
+  padding-right: 10px;
 }
