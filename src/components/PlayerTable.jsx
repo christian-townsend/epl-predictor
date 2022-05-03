@@ -7,7 +7,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 function PlayerTable() {
-    // The columns we will render. The value will be used in the Overlay.
+  // The columns we will render. The value will be used in the Overlay.
   const columns = [
     { header: "Name", definition: "Player's name" },
     { header: "Pos", definition: "Player's position" },
@@ -27,6 +27,22 @@ function PlayerTable() {
     },
   ];
 
+  console.log(players);
+  console.log("------------------------------");
+
+  function compare(a, b) {
+    if (a["G+A"] > b["G+A"]) {
+      return -1;
+    }
+    if (a["G+A"] < b["G+A"]) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  console.log(players.sort(compare));
+
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       {props}
@@ -41,7 +57,7 @@ function PlayerTable() {
           delay={{ show: 250, hide: 400 }}
           overlay={renderTooltip(key.definition)}
         >
-          <th>{key.header}</th>
+          <th onClick={players.sort(compare)}>{key.header}</th>
         </OverlayTrigger>
       );
     });
