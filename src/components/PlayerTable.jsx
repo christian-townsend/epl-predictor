@@ -7,12 +7,25 @@ import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 function PlayerTable() {
-  const columns = {
-    Name: "Player's name",
-    Pos: "Player's position",
-    Squad: "Player's squad",
-    Starts: "How many times the player started this season",
-  };
+    // The columns we will render. The value will be used in the Overlay.
+  const columns = [
+    { header: "Name", definition: "Player's name" },
+    { header: "Pos", definition: "Player's position" },
+    { header: "Squad", definition: "Player's squad" },
+    {
+      header: "Starts",
+      definition: "How many times the player started this season",
+    },
+    { header: "Gls", definition: "Goals scored" },
+    { header: "Ast", definition: "Assists" },
+    { header: "G+A", definition: "Goals + Assists per 90 minutes" },
+    { header: "xG", definition: "Expected goals" },
+    { header: "xA", definition: "Expected assists" },
+    {
+      header: "xG+xA",
+      definition: "Expected Goals + Expected Assists per 90 minutes",
+    },
+  ];
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -21,14 +34,14 @@ function PlayerTable() {
   );
 
   const Overlay = () =>
-    Object.entries(columns).map(([key, value]) => {
+    columns.map((key, value) => {
       return (
         <OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}
-          overlay={renderTooltip(value)}
+          overlay={renderTooltip(key.definition)}
         >
-          <th>{key}</th>
+          <th>{key.header}</th>
         </OverlayTrigger>
       );
     });
@@ -44,7 +57,6 @@ function PlayerTable() {
               <Overlay />
             </tr>
           </thead>
-
           <tbody>
             {players.map((player, index) => {
               return (
@@ -53,6 +65,12 @@ function PlayerTable() {
                   <td>{player.Pos}</td>
                   <td>{player.Squad}</td>
                   <td>{player.Starts}</td>
+                  <td>{player.Gls}</td>
+                  <td>{player.Ast}</td>
+                  <td>{player["G+A"]}</td>
+                  <td>{player.xG}</td>
+                  <td>{player.xA}</td>
+                  <td>{player["xG+xA"]}</td>
                 </tr>
               );
             })}

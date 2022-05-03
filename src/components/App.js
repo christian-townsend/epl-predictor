@@ -1,19 +1,9 @@
-import logo from "../../src/logo.png";
 import "../styles/App.css";
 import React, { useState } from "react";
-import {
-  Table,
-  InputGroup,
-  Navbar,
-  Nav,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import players from "./players.json";
 import PlayerTable from "./PlayerTable.jsx";
-
-players.sort();
+import Footer from "./footer.jsx";
 
 function App() {
   return (
@@ -32,6 +22,9 @@ function App() {
         </Nav>
       </Navbar>
       <PlayerTable />
+      <div style={{ position: "fixed", bottom: "0" }}>
+        <Footer />
+      </div>
     </div>
   );
 }
